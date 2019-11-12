@@ -29,6 +29,7 @@ export class IncartProductsComponent implements OnInit {
 
   ngOnInit() {
     this.email = localStorage.getItem('emailId');
+    console.log("local storage email is: " + this.email);
 
     this._productDetailsService.getInProductList().subscribe(
       list =>{
@@ -43,6 +44,7 @@ export class IncartProductsComponent implements OnInit {
     //    this.totalAmount+=cart.productPrice;
     //  }
      //console.log(this.totalAmount);
+     console.log(this.incartProductArray);
   }
 
   increase(incart){

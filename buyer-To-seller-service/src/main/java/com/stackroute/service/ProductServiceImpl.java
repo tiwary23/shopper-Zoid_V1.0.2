@@ -201,7 +201,7 @@ public class ProductServiceImpl implements ProductService {
         Product product=productRepository.findByProductName(productName).get(0);
         List<Seller> sellers=product.getSellers();
         Seller seller=sellers.stream().filter(x->x.getSellerId().equalsIgnoreCase(sellerId)).collect(Collectors.toList()).get(0);
-        //System.out.println(seller);
+        System.out.println(seller);
         seller.setProductSold(seller.getProductSold()+1);
         seller.setProductStock(seller.getProductStock()-1);
         for(int i=0;i<sellers.size();i++){
@@ -225,7 +225,7 @@ public class ProductServiceImpl implements ProductService {
         return seller;
     }
 
-    @KafkaListener(topics = "product-Info", groupId = "product-id",containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "product-Info-1", groupId = "product-id",containerFactory = "kafkaListenerContainerFactory")
     public void consumeSeller(@Payload Product product){
         System.out.println(product.toString());
         if(productRepository.findByProductName(product.getProductName()).isEmpty()){

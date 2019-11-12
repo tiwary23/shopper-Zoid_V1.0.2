@@ -84,6 +84,10 @@ export class PaymentComponent implements OnInit {
   goToProfile(){
     this.router.navigate(['/buyer-profile',{recUrl:this.receipt_url,balTran:this.balance_transaction,eMail:this.email}]);
   }
+
+  goToIncart(){
+    this.router.navigate(['']);
+  }
   
 }
 
