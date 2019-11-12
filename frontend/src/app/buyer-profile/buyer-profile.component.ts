@@ -32,7 +32,10 @@ export class BuyerProfileComponent implements OnInit {
   private order:any;
 
 
-  constructor(private orderService:OrderService,private buyerService: BuyerProfileService,private router:Router,private route:ActivatedRoute) { }
+  constructor(private orderService:OrderService, 
+    private buyerService: BuyerProfileService,
+    private router:Router,
+    private route:ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params:ParamMap)=>{
