@@ -4,11 +4,6 @@ import { IncartProducts } from './incartProducts';
 import { summaryFileName } from '@angular/compiler/src/aot/util';
 import { ActivatedRoute, Router} from '@angular/router';
 
-@Component({
-  selector: 'app-incart-products',
-  templateUrl: './incart-products.component.html',
-  styleUrls: ['./incart-products.component.css']
-})
 
 export class Product {
   productName: string;
@@ -27,6 +22,12 @@ export class Order {
   buyerOfficeAddress: string;
   status: string;
 }
+
+@Component({
+  selector: 'app-incart-products',
+  templateUrl: './incart-products.component.html',
+  styleUrls: ['./incart-products.component.css']
+})
 export class IncartProductsComponent implements OnInit {
 
   private order:Order = new Order();
