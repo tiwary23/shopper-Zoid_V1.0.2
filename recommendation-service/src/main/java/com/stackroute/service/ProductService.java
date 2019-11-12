@@ -24,6 +24,7 @@ public class ProductService {
     public List<Products> productHavingSamePriceRange(Long productId) {
         List<Products> products=productRepository.getProductSamePriceRange(productId);
         products.addAll(productRepository.getProductSameBrand(productId));
+        products.addAll(productRepository.getRelatedProduct(productId));
         return products;
     }
 

@@ -42,7 +42,7 @@ export class Seller{
 
 export class Product{
   productCategory: string;
-  productSubcategory: string;
+  productSubCategory: string;
   productName: string;
   productDescription: string;
   productImage:string;
@@ -51,7 +51,7 @@ export class Product{
 
 export class Book{
   bookCategory: string;
-  bookSubcategory: string;
+  bookSubCategory: string;
   bookTitle: string;
   bookAuthor: string;
   bookISBN: string;
@@ -76,7 +76,7 @@ export class AddProductComponent implements OnInit {
   eMail;
   product: Product={
     productCategory:'',
-    productSubcategory:'',
+    productSubCategory:'',
     productName:'',
     productDescription:'',
     productImage:'',
@@ -93,7 +93,7 @@ export class AddProductComponent implements OnInit {
     bookTitle:'',
     bookDescription:'',
     bookCategory:'',
-    bookSubcategory:'',
+    bookSubCategory:'',
     bookPublisher:'',
     bookImage:'',
     sellers:[{
@@ -171,7 +171,7 @@ export class AddProductComponent implements OnInit {
 
   takeInfoProduct() {
     this.product.productCategory=this.firstFormGroup.value.category1;
-    this.product.productSubcategory=this.firstFormGroup.value.subcategory;
+    this.product.productSubCategory=this.firstFormGroup.value.subcategory;
     this.product.productName=this.secondFormGroup.value.name;
     this.product.productDescription=this.secondFormGroup.value.description;
     this.product.sellers[0].productStock=this.fourthFormGroup.value.quantity;
@@ -183,7 +183,7 @@ export class AddProductComponent implements OnInit {
     }
   takeInfoBook(){
     this.book.bookCategory=this.firstFormGroup.value.category1;
-    this.book.bookSubcategory=this.firstFormGroup.value.subcategory;
+    this.book.bookSubCategory=this.firstFormGroup.value.subcategory;
     this.book.bookAuthor=this.thirdFormGroup.value.author;
     this.book.bookTitle=this.thirdFormGroup.value.title;
     this.book.bookDescription=this.thirdFormGroup.value.description;
