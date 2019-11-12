@@ -42,7 +42,7 @@ export class IncartProductsComponent implements OnInit {
   private sum :Number=0;
 
   private email: string;
-  private name: string;
+  private name: string="user";
 
   constructor(private router: ActivatedRoute, 
     private _productDetailsService: ProductDetailsService,
