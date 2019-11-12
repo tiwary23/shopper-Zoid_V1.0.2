@@ -29,7 +29,7 @@ export class IncartProductsComponent implements OnInit {
 
   ngOnInit() {
     this.email = localStorage.getItem('emailId');
-
+    //this._productDetailsService.insertInProductList("dasd", "asdas", "asda")
     this._productDetailsService.getInProductList().subscribe(
       list =>{
         this.incartProductArray = list.map(item =>{ 
@@ -49,7 +49,7 @@ export class IncartProductsComponent implements OnInit {
     console.log("In function increase()");
 
     if(incart.productQuantityIncart <5){
-      incart.productQuantityIncart++;
+      (incart.productQuantityIncart)++;
       // this.total=this.total+incart.productPrice;
       this._productDetailsService.updateIncartProduct(incart);
     }
@@ -71,6 +71,7 @@ export class IncartProductsComponent implements OnInit {
   }
   
   serialNumber(){
+    
     return this.i++;
   }
   
