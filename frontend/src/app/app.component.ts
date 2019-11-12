@@ -18,14 +18,10 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     console.log(this.router.url);  
     console.log(this.authService.isUserLoggedIn());
-    
-    if(this.authService.isUserLoggedIn()){
-      
-      this.notLoggedIn=false;
-    }
-    else{
-      this.notLoggedIn=true;
-    }
+  }
+
+  isLoggedIn(){
+    return !(this.authService.isUserLoggedIn());
   }
 
 }

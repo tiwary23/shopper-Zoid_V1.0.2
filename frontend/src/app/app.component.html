@@ -1,7 +1,7 @@
 <!--Navbar component goes here-->
 <!-- <div *ngIf="notOnPayment"> -->
 
-<div *ngIf="notLoggedIn; then ifBlock; else elseBlock"></div>
+<div *ngIf="isLoggedIn(); then ifBlock; else elseBlock"></div>
 
 <ng-template #ifBlock>
   <app-navbar></app-navbar>

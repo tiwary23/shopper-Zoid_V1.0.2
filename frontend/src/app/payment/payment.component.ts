@@ -4,6 +4,7 @@ import { PayCustomer } from './payCustomer';
 import { StripeCustomer } from './stripeCustomer';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Charge } from './charge';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,6 +17,8 @@ export class PaymentComponent implements OnInit {
   private customer:PayCustomer= new PayCustomer();
   private customerDetail:PayCustomer = new PayCustomer();
   private chargeObject:Charge = new Charge();
+  // private order:Order = new Order();
+  // private product:Product = new Product();
   private email:String;
   private name:String;
   private custStripeId:String;
@@ -32,7 +35,7 @@ export class PaymentComponent implements OnInit {
   
 
 
-  constructor(private service: PaymentService,private route:ActivatedRoute,private router:Router) {
+  constructor(private orderService:OrderService,private service: PaymentService,private route:ActivatedRoute,private router:Router) {
    }
 
   ngOnInit() {
@@ -40,7 +43,7 @@ export class PaymentComponent implements OnInit {
       this.route.paramMap.subscribe((params:ParamMap)=>{
         this.email = params.get("email"); 
         this.name = params.get("name");
-        this.amount = params.get("amount")
+        this.amount = params.get("amount");
         console.log(this.email,this.name,this.amount);
       })
       this.service.addStripeCust(this.name,this.email).subscribe(data => {this.custData = data;console.log(this.custData);
@@ -73,6 +76,7 @@ export class PaymentComponent implements OnInit {
             if(this.paymentStatus=="succeeded"){
               this.paymentSuccess=!this.paymentSuccess;
               this.payment=!this.payment;
+              
               }
 
           });
@@ -83,6 +87,10 @@ export class PaymentComponent implements OnInit {
 
   goToProfile(){
     this.router.navigate(['/buyer-profile',{recUrl:this.receipt_url,balTran:this.balance_transaction,eMail:this.email}]);
+  }
+
+  goToIncart(){
+    this.router.navigate(['']);
   }
   
 }
