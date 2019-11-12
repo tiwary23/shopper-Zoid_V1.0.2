@@ -50,7 +50,7 @@ export class SellerDashboardInventoryComponent implements OnInit {
     console.log(this.seller);
   }
 
-  displayedColumns: string[] = ['productName', 'productImage', 'productDescription', 'productCategory', 'productSubcategory'];
+  displayedColumns: string[] = ['productName', 'productImage', 'productDescription', 'productCategory', 'productSubcategory','editProduct'];
   dataSource = INVENTORY_DATA;
   // dataSource = this.seller.sellerProducts;
 
@@ -61,7 +61,10 @@ export class SellerDashboardInventoryComponent implements OnInit {
   goToSellerDashboard(){
     this.router.navigate(['./seller-dashboard', { eMail:this.eMail }]);
   }
-
+  
+  editProduct(prName){
+    this.router.navigate(['./edit-product', { eMail:this.eMail,prName:prName }]);
+  }
   // updateProduct(){
   //   this.router.navigate(['./', { eMail:this.eMail }]);
   // }

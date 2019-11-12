@@ -105,6 +105,12 @@
                                 <th mat-header-cell *matHeaderCellDef> Product Subcategory </th>
                                 <td mat-cell *matCellDef="let element"> {{element.productSubcategory}} </td>
                             </ng-container>
+
+                            <!-- Edit Product Column -->
+                            <ng-container matColumnDef="editProduct">
+                                <th mat-header-cell *matHeaderCellDef> Edit Your Product </th>
+                                <td mat-cell *matCellDef="let element"> <button class="btn btn-dark" (click)="editProduct(element.productName)"> Edit </button> </td>
+                            </ng-container>
                             
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
