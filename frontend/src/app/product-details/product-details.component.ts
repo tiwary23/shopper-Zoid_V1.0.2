@@ -77,7 +77,7 @@ export class ProductDetailsComponent implements OnInit {
     this._productDetailsService.insertInProductList(this.product, this.seller, this.incartProduct);
     this.showSuccessMsg = true;
 
-    setTimeout(() => this.showSuccessMsg = false,3000);
+    setTimeout(() => this.showSuccessMsg = false, 3000);
     // this.router.navigate(['./app-incart-products', { product:this.product }]);
   }
 

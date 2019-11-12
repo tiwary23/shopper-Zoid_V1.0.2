@@ -4,6 +4,24 @@ import { IncartProducts } from './incartProducts';
 import { summaryFileName } from '@angular/compiler/src/aot/util';
 import { ActivatedRoute, Router} from '@angular/router';
 
+export class Product {
+  productName: string;
+  productDescription: string;
+  productPrice: any; //what type ?
+  productImage: string;
+  sellerEmail: string;
+  productQty: number;
+}
+
+export class Order {
+  rating: any; //what type ??
+  products: Product[];
+  buyerPhone: any;
+  buyerHomeAddress: string;
+  buyerOfficeAddress: string;
+  status: string;
+}
+
 @Component({
   selector: 'app-incart-products',
   templateUrl: './incart-products.component.html',
@@ -11,7 +29,10 @@ import { ActivatedRoute, Router} from '@angular/router';
 })
 export class IncartProductsComponent implements OnInit {
 
-  incartProductArray = [];
+  private order:Order = new Order();
+  private product:Product = new Product();
+  // incartProductArray = [];
+  private incartProductArray:IncartProducts[];
   productQty = 1;
   productTotal = 0;
   totalAmount = 0;
@@ -21,7 +42,7 @@ export class IncartProductsComponent implements OnInit {
   private sum :Number=0;
 
   private email: string;
-  private name: string;
+  private name: string="user";
 
   constructor(private router: ActivatedRoute, 
     private _productDetailsService: ProductDetailsService,
@@ -30,6 +51,8 @@ export class IncartProductsComponent implements OnInit {
   ngOnInit() {
     this.email = localStorage.getItem('emailId');
     //this._productDetailsService.insertInProductList("dasd", "asdas", "asda")
+    console.log("local storage email is: " + this.email);
+
     this._productDetailsService.getInProductList().subscribe(
       list =>{
         this.incartProductArray = list.map(item =>{ 
@@ -43,6 +66,7 @@ export class IncartProductsComponent implements OnInit {
     //    this.totalAmount+=cart.productPrice;
     //  }
      //console.log(this.totalAmount);
+     console.log(this.incartProductArray);
   }
 
   increase(incart){
@@ -104,7 +128,9 @@ export class IncartProductsComponent implements OnInit {
   }
 
   goToPayment() {
-    this.route.navigate(['/payment', { email: this.email, amount: this.sum }]);
+    //this.product.productName=this.incartProductArray.
+    //this.order.products.push()
+    this.route.navigate(['/payment', { email: this.email, name:this.name,amount: this.sum }]);
   }
 
 }

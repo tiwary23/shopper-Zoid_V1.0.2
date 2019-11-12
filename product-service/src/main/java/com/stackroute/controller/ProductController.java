@@ -55,6 +55,7 @@ public class ProductController {
         productRecomDto.setProductStock(product.getSellers().get(0).getProductStock());
         this.producer.sendProductRecom(productRecomDto);
         this.producer.sendProduct(product1);
+        this.producer.sendProductToMap(product1);
         return responseEntity;
     }
 
@@ -80,6 +81,19 @@ public class ProductController {
     public ResponseEntity<?> getSellerListOfProduct(@RequestParam("productName") String productId) throws ProductNotExistsException {
         List<Seller> sellerList = productService.getSellerListOfProduct(productId);
         ResponseEntity responseEntity = new ResponseEntity(sellerList,HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @GetMapping("product/seller")
+    public ResponseEntity<?> getSellerToProduct(@RequestParam("sellerEmail") String sellerId, @RequestParam("productName") String productName) throws ProductNotExistsException {
+        List<Seller> sellerList = productService.getSellerListOfProduct(productName);
+        Seller seller=null;
+        for(Seller s:sellerList){
+            if(s.getSellerId().equals(sellerId)){
+                seller=s;
+            }
+        }
+        ResponseEntity responseEntity = new ResponseEntity(seller,HttpStatus.OK);
         return responseEntity;
     }
 

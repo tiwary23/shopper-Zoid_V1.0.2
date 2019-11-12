@@ -25,11 +25,8 @@ public interface BuyerRepository extends Neo4jRepository<Buyer, Long> {
     @Query("MATCH (b)-[r:ADD2CART]->(p) where id(b)={buyerId} AND id(p)={productId} DELETE r")
     void DeleteFromCartProduct(@Param("buyerId") Long buyerId,@Param("productId") Long productId);
 
-    @Query("Match (b:Buyer) where b.emailId={emailId} return b")
+    @Query("Match (b:Buyer) where b.buyerEmail={emailId} return b")
     Buyer findByEmailId(@Param("emailId") String emailId);
-
-
-
 
 
 }

@@ -33,6 +33,7 @@ export const environment = {
   findSellerByIdUrl:'https://shopperzoid.stackroute.io:8443/deals/api/v1/products/',
   getFromDatabaseUrl:'https://shopperzoid.stackroute.io:8443/sellerProfile/api/v1/seller',
   updateToDatabaseUrl:'https://shopperzoid.stackroute.io:8443/sellerProfile/api/v1/seller',
+  saveToOrdersOnBuyerProfileUrl:'https://shopperzoid.stackroute.io:8443/orderService/api/v1/order',
   // firebaseConfig:{
   //   apiKey: "AIzaSyAcBaLHaUkw5qopIHNyBPqJVGMJJ0B8J5Y",
   //    authDomain: "shopper-zoid-3f1f7.firebaseapp.com",

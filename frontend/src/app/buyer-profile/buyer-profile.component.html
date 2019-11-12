@@ -539,10 +539,10 @@
             <p>Ordered Product</p>
             <div class="row">
 
-                <div *ngFor="let product of buyer.incartProducts | slice:0:3; let i=index" class="col-sm-3 flex">
+                <div *ngFor="let ord of order | slice:0:3; let i=index" class="col-sm-3 flex">
                     <div class="card">
                         <div class="card-body">
-                            <p class="card-text">ID:{{product.productId}}</p>
+                            <p class="card-text">ID:{{ord.orderId}}</p>
                         </div>
                     </div>
                 </div>

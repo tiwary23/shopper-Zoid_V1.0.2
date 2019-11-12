@@ -7,6 +7,8 @@ import com.stackroute.exception.ProductNotExistsException;
 import com.stackroute.kafka.NewSellerDto;
 import com.stackroute.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -88,6 +90,7 @@ public class ProductServiceImpl implements ProductService {
         product.setSellers(sellerList);
         Product product1 = updateProduct(product);
         this.producer.sendProduct(product1);
+        this.producer.sendProductToMap(product1);
         NewSellerDto newSellerDto = new NewSellerDto();
         newSellerDto.setProductName(product1.getProductName());
         newSellerDto.setSellerEmail(seller.getSellerId());
@@ -176,6 +179,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Seller deleteAllProductOfSeller(Seller seller) {
         return null;
+    }
+
+    @KafkaListener(topics = "product-Refined", groupId = "product-id",containerFactory = "kafkaListenerContainerFactory")
+    public void consumeSeller(@Payload Product product){
+        System.out.println(product.toString());
+            Product getProduct = productRepository.findByProductName(product.getProductName().toLowerCase());
+            getProduct.setProductName(product.getProductName());
+            getProduct.setSellers(product.getSellers());
+            productRepository.save(getProduct);
     }
 
 
