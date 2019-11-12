@@ -4,7 +4,6 @@ import { IncartProducts } from './incartProducts';
 import { summaryFileName } from '@angular/compiler/src/aot/util';
 import { ActivatedRoute, Router} from '@angular/router';
 
-
 export class Product {
   productName: string;
   productDescription: string;
