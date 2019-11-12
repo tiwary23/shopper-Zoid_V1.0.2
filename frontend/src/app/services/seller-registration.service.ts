@@ -18,6 +18,7 @@ const httpOptions = {
 export class SellerRegistrationService {
 
   private add_url = environment.updateToDatabaseUrl;
+  
   constructor(private http: HttpClient) { }
 
   add(seller: Seller1): Observable<any>{

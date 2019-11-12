@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BuyerProfileService } from '../services/buyer-profile.service';
 import { Buyer } from './buyer';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-buyer-profile',
@@ -28,9 +29,10 @@ export class BuyerProfileComponent implements OnInit {
   private addressOfficeEdit:boolean;
   private dateofbirth:boolean;
   private dateofbirth1:boolean;
+  private order:any;
 
 
-  constructor(private buyerService: BuyerProfileService,private router:Router,private route:ActivatedRoute) { }
+  constructor(private orderService:OrderService,private buyerService: BuyerProfileService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params:ParamMap)=>{
@@ -69,6 +71,10 @@ export class BuyerProfileComponent implements OnInit {
     this.editableAddress = false;
     this.editableOrder = true;
     this.editablePayment = false;
+    this.orderService.fetchAllOrdersOnBuyerProfile(this.emailId).subscribe(data=>{
+        this.order = data;
+        console.log(this.order);
+    });
   }
   toggleEditablePayment(){
     this.editableProfile = false;

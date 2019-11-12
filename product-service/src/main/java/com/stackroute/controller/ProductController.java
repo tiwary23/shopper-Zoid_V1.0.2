@@ -55,6 +55,7 @@ public class ProductController {
         productRecomDto.setProductStock(product.getSellers().get(0).getProductStock());
         this.producer.sendProductRecom(productRecomDto);
         this.producer.sendProduct(product1);
+        this.producer.sendProductToMap(product1);
         return responseEntity;
     }
 

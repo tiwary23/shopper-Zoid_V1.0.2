@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 public class Producer {
     private static final String TOPIC_PRODUCT="product-Info";
 
+    private static final String TOPIC_PRODUCT_1="product-Info-1";
+
     private static final String TOPIC_BOOK="book-Info";
 
     private static final String TOPIC_PRODUCT_RECOM="product-recomm-Info";
@@ -39,6 +41,10 @@ public class Producer {
 
     public void sendProduct( Product product) {
         kafkaTemplateProduct.send(TOPIC_PRODUCT, product);
+    }
+
+    public void sendProductToMap( Product product) {
+        kafkaTemplateProduct.send(TOPIC_PRODUCT_1, product);
     }
 
     public void sendBook( Book book) {

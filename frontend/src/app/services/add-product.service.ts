@@ -45,8 +45,7 @@ export class AddProductService {
       'Authorization': 'Bearer ' + localStorage.getItem('token')
     })};
     console.log(httpOptions);
-    
-   return this.http.post<any>(environment.searchProductUrl+`${productName}`,httpOptions);
+   return this.http.post<any>(environment.searchProductUrl+`${productName}`,"",httpOptions);
  } 
 
  updateProduct(product,seller){
