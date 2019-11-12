@@ -29,6 +29,7 @@ export class IncartProductsComponent implements OnInit {
 
   ngOnInit() {
     this.email = localStorage.getItem('emailId');
+    console.log("local storage email is: " + this.email);
 
     this._productDetailsService.getInProductList().subscribe(
       list =>{
