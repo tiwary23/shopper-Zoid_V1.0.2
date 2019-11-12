@@ -83,6 +83,19 @@ public class ProductController {
         return responseEntity;
     }
 
+    @GetMapping("product/seller")
+    public ResponseEntity<?> getSellerToProduct(@RequestParam("sellerEmail") String sellerId, @RequestParam("productName") String productName) throws ProductNotExistsException {
+        List<Seller> sellerList = productService.getSellerListOfProduct(productName);
+        Seller seller=null;
+        for(Seller s:sellerList){
+            if(s.getSellerId().equals(sellerId)){
+                seller=s;
+            }
+        }
+        ResponseEntity responseEntity = new ResponseEntity(seller,HttpStatus.OK);
+        return responseEntity;
+    }
+
     @PutMapping("product/seller")
     public ResponseEntity<?> addSellerToProduct(@RequestBody Seller seller,@RequestParam("productName") String productId) throws ProductNotExistsException {
         boolean b = productService.addSeller(productId,seller);
