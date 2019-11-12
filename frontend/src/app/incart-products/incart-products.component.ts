@@ -43,6 +43,7 @@ export class IncartProductsComponent implements OnInit {
     //    this.totalAmount+=cart.productPrice;
     //  }
      //console.log(this.totalAmount);
+     console.log(this.incartProductArray);
   }
 
   increase(incart){
